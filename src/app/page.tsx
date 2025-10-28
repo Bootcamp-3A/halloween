@@ -29,7 +29,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-between bg-gradient-to-b from-[#0b0b0b] via-[#1f1f1f] to-[#2a2a2a] text-white">
+    <div className="w-screen h-screen flex flex-col items-center justify-between bg-linear-to-b from-[#0b0b0b] via-[#1f1f1f] to-[#2a2a2a] text-white">
       {/* Type Animation Header */}
       <div className="w-full flex justify-center mt-10">
         <TypeAnimation
