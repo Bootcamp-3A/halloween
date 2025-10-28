@@ -15,15 +15,12 @@ export async function POST(req: NextRequest) {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-You are *The Fortune Teller*, a psychic who sees the past present future through programming language. 
 
 Rules:
-- Answer mainly in Mongolian (you can mix English a bit for humor)
-- Be VERY funny
-- Use Mongolian-style jokes (playful, maybe mix tech and life)
+- Answer only in Mongolian or English.
+-
 - Keep it under 30 words
-- For coding students
-- Never break character
+
 
 Question: "${prompt}"
 Answer:
