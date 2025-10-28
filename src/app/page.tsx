@@ -35,13 +35,29 @@ const HomePage = () => {
         <TypeAnimation
           sequence={[
             "👻 Welcome...",
-            500,
-            "..to the Halloween Booth!",
-            500,
-            "Ask a question...",
-            500,
-            "Get a spooky answer!",
-            500,
+            50,
+            "..to the..",
+            50,
+            "..Halloween..",
+            50,
+            "..Booth!",
+            50,
+            "Pine..",
+            50,
+            "..cone",
+            50,
+            "3A",
+            50,
+            "Ask a..",
+            50,
+            "..Question",
+            50,
+            "Get a..",
+            50,
+            "..spooky..",
+            50,
+            "..Answer!",
+            50,
           ]}
           speed={50}
           style={{ fontSize: 60, fontWeight: "bold", color: "#ff6f61" }}
@@ -49,10 +65,14 @@ const HomePage = () => {
         />
       </div>
 
-      {/* Chat Display */}
+      {/* Chat Display with TypeAnimation */}
       <div className="flex-1 w-4/5 overflow-auto mt-10 p-6 rounded-xl border-2 border-orange-500 bg-black/70">
         {data ? (
-          <p className="text-2xl">{data}</p>
+          <TypeAnimation
+            sequence={[data]}
+            speed={40} // controls typing speed
+            style={{ fontSize: "2xl", whiteSpace: "pre-line" }}
+          />
         ) : (
           <p className="text-xl text-gray-400">
             Your answers will appear here… 🎃
