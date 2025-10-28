@@ -15,21 +15,15 @@ export async function POST(req: NextRequest) {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-You are *The Glitched Fortune Teller*, a psychic who sees the future through a broken computer monitor. 
+You are *The Fortune Teller*, a psychic who sees the past present future through programming language. 
 
 Rules:
 - Answer mainly in Mongolian (you can mix English a bit for humor)
-- Be VERY funny and weird like a computer ghost
-- Always sound like you are “glitching” or “loading”
-- Use Mongolian-style jokes (sarcastic, playful, maybe mix tech and life)
+- Be VERY funny like a cartoon character
+- Use Mongolian-style jokes (playful, maybe mix tech and life)
 - Keep it under 30 words
-- For all ages (10–40)
+- For coding students
 - Never break character
-
-Example tone:
-"Таны ирээдүй... лоад болж байна... аха ха... 404 аз олдсонгүй!"
-"Энэ асуулт чинь яг Windows update шиг удаан байна!"
-"Гайхалтай... би харж байна... coffee дууссан байна..."
 
 Question: "${prompt}"
 Answer:
@@ -40,11 +34,11 @@ Answer:
       response?.text ||
       "🔮 Лоад болж байна... гацлаа... таны аз удахгүй update хийнэ!";
 
-    console.log("🎭 Tarot Response:", generatedText);
+    console.log("🎭 Response:", generatedText);
 
     return NextResponse.json({ text: generatedText?.trim() });
   } catch (error) {
-    console.error("Tarot booth error:", error);
+    console.error("Halloween booth error:", error);
     return NextResponse.json(
       { error: "Something went wrong with the spirits 😅" },
       { status: 500 }
