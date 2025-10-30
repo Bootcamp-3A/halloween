@@ -17,8 +17,10 @@ export async function POST(req: NextRequest) {
       contents: `
 
 Rules:
+- if questions are Mongolian translate and answer folllowingB
 - Answer only in Mongolian or English.
--
+- if questions are about date answer properly
+- if you do not know sure about given question please tell simple joke
 - Keep it under 30 words
 
 

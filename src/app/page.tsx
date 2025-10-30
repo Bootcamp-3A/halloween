@@ -5,6 +5,7 @@ import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { GiGhost } from "react-icons/gi";
 import Image from "next/image";
+import Markdown from "react-markdown";
 
 const HomePage = () => {
   const [prompt, setPrompt] = useState<string>("");
@@ -66,12 +67,13 @@ const HomePage = () => {
       </div>
 
       {/* Chat Display with TypeAnimation */}
+
       <div className="flex-1 w-4/5 overflow-auto mt-10 p-6 rounded-xl border-2 border-orange-500 bg-black/70">
         {data ? (
           <TypeAnimation
             sequence={[data]}
             speed={40} // controls typing speed
-            style={{ fontSize: "2xl", whiteSpace: "pre-line" }}
+            className="text-6xl"
           />
         ) : (
           <p className="text-xl text-gray-400">
@@ -85,14 +87,22 @@ const HomePage = () => {
         <Textarea
           onChange={(e) => setPrompt(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && generateChat()}
-          className="flex-1 rounded-xl text-2xl leading-8 p-4 bg-black/70 text-white border-orange-500 focus:ring-orange-400"
+          className="min-h-100 flex-1 rounded-xl text-4xl md:text-4xl p-4 bg-black/70 text-white border-orange-500 focus:ring-orange-400"
           placeholder="Ask the spooky oracle..."
         />
         <Button
           onClick={generateChat}
-          className="w-20 h-20 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center"
+          className="w-20 h-full rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center"
         >
-          <GiGhost className="w-10 h-10 text-white animate-bounce" />
+          <div>
+            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce" />
+          </div>
         </Button>
       </div>
 
