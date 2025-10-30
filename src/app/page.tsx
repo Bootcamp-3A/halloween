@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Textarea } from "@/components/ui";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { GiGhost } from "react-icons/gi";
 import Image from "next/image";
@@ -12,8 +12,15 @@ const HomePage = () => {
   const [data, setData] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
+  const handlePrompt = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setPrompt(e.target.value);
+  };
+
   const generateChat = async () => {
     setLoading(true);
+    setData("");
+    setPrompt("");
+
     const response = await fetch("/api/gemini-chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -21,6 +28,7 @@ const HomePage = () => {
     });
 
     const result = await response.json();
+
     if (result.text) {
       setData(result.text);
     } else {
@@ -60,7 +68,7 @@ const HomePage = () => {
             "..Answer!",
             50,
           ]}
-          speed={50}
+          speed={30}
           style={{ fontSize: 60, fontWeight: "bold", color: "#ff6f61" }}
           repeat={Infinity}
         />
@@ -76,18 +84,57 @@ const HomePage = () => {
             className="text-6xl"
           />
         ) : (
-          <p className="text-xl text-gray-400">
-            Your answers will appear here… 🎃
-          </p>
+          <div>
+            <div className="text-6xl ml-[0%] text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[5%] mt-70 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[15%] -mt-70 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[30%] mt-70 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[40%] -mt-70 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[50%] mt-60 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[60%] -mt-90 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[70%] mt-30 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[80%] -mt-60 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[90%] mt-90 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[95%] -mt-60 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[100%] -mt-60 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+            <div className="text-6xl ml-[50%] -mt-20 text-gray-400 animate-spin w-10 h-10">
+              🎃
+            </div>
+          </div>
         )}
       </div>
 
       {/* Input Section */}
       <div className="w-4/5 flex gap-5 mt-6 mb-10">
         <Textarea
-          onChange={(e) => setPrompt(e.target.value)}
+          onChange={handlePrompt}
+          value={prompt}
           onKeyDown={(e) => e.key === "Enter" && generateChat()}
-          className="min-h-100 flex-1 rounded-xl text-4xl md:text-4xl p-4 bg-black/70 text-white border-orange-500 focus:ring-orange-400"
+          className="flex-1 rounded-xl text-4xl md:text-4xl p-4 bg-black/70 text-white border-orange-500 focus:ring-orange-400"
           placeholder="Ask the spooky oracle..."
         />
         <Button
@@ -95,8 +142,7 @@ const HomePage = () => {
           className="w-20 h-full rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center"
         >
           <div>
-            <GiGhost className="size-12 text-white animate-bounce" />
-            <GiGhost className="size-12 text-white animate-bounce" />
+            <GiGhost className="size-12 text-white animate-bounce hover:animate-collapsible-down" />
             <GiGhost className="size-12 text-white animate-bounce" />
             <GiGhost className="size-12 text-white animate-bounce" />
             <GiGhost className="size-12 text-white animate-bounce" />
